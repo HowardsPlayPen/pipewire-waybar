@@ -149,7 +149,9 @@ void build_ui(App& app) {
     gtk_list_box_set_selection_mode(GTK_LIST_BOX(listbox), GTK_SELECTION_NONE);
     gtk_widget_set_halign(listbox, GTK_ALIGN_END);
     gtk_widget_set_valign(listbox, GTK_ALIGN_START);
-    gtk_widget_set_margin_top(listbox, 36);
+    // The surface already sits below the bar (it respects Waybar's exclusive
+    // zone), so only a small gap is needed here.
+    gtk_widget_set_margin_top(listbox, 4);
     gtk_widget_set_margin_end(listbox, 8);
     gtk_widget_set_size_request(listbox, 320, -1);
     app.menu = listbox;

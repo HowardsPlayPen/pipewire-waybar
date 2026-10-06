@@ -87,6 +87,32 @@ A `pipewire-waybar.service` user unit is installed to
 systemctl --user enable --now pipewire-waybar
 ```
 
+## Usage
+
+`list` shows every configured sink with its type and PipeWire node name. `*`
+marks the chosen sink, and `(unavailable)` marks sinks that aren't currently
+present (e.g. a Bluetooth headset that's switched off):
+
+```
+$ pipewire-waybar list
+  [spdif] Digital Output  -- alsa_output.pci-0000_7b_00.6.iec958-stereo
+  [hdmi] ElectriQ  -- alsa_output.pci-0000_03_00.1.pro-output-8
+  [hdmi] Desklab  -- alsa_output.pci-0000_7b_00.1.hdmi-stereo
+  [hdmi] BenQ EL2870U  -- alsa_output.pci-0000_03_00.1.pro-output-3
+  [unknown] HS2 (unavailable)  -- bluez_output.24_09_01_FD_40_3E.1
+* [virtual] Everywhere  -- phc_combine_everywhere
+```
+
+Get or switch the chosen sink by its friendly name (quote names with spaces).
+The daemon picks up config edits automatically; `reload` forces a re-read:
+
+```
+$ pipewire-waybar get
+Everywhere
+$ pipewire-waybar set "BenQ EL2870U"
+$ pipewire-waybar reload
+```
+
 ## Waybar integration
 
 Drop the snippet from `contrib/waybar-config-snippet.jsonc` into your bar's
@@ -94,6 +120,27 @@ config. It runs `pipewire-waybar watch` to stream JSON updates and binds
 `on-click` to `pipewire-waybar-picker`. Style classes (`hdmi`, `usb`,
 `bluetooth`, `unavailable`, `flash`, …) are emitted on the widget so you can
 theme via `style.css`.
+
+![Waybar sink picker](docs/waybar-picker.png)
+
+The widget shows the currently chosen sink ("Everywhere" above). Hover over
+it for a tooltip listing every sink and its state; click it to open the
+picker:
+
+- Each configured sink is listed with an icon for its type (`hdmi`, `spdif`,
+  `bluetooth`, `virtual`, …) and a ✓ next to the one currently chosen.
+- Click a sink to switch to it. The daemon makes it the default and moves
+  every playing stream onto it, and new streams follow it too. The picker
+  closes and the widget updates.
+- Choose a virtual sink such as "Everywhere" to play on all of its members
+  at once.
+- Sinks that aren't present right now (e.g. "HS2", a Bluetooth headset that's
+  switched off) are greyed out and marked `(unavailable)`. They become
+  selectable as soon as the device appears, and the widget briefly flashes to
+  let you know.
+- Hover a row to see its type and PipeWire node name.
+- Press <kbd>Esc</kbd> or click outside the list to close without changing
+  anything.
 
 ## Layout
 
