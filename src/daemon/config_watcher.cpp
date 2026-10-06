@@ -46,7 +46,7 @@ void ConfigWatcher::stop() {
     stop_.store(true);
     if (event_fd_ >= 0) {
         uint64_t one = 1;
-        (void)::write(event_fd_, &one, sizeof(one));
+        if (::write(event_fd_, &one, sizeof(one)) < 0) { /* best-effort wakeup */ }
     }
     thread_.join();
     if (inotify_fd_ >= 0) { ::close(inotify_fd_); inotify_fd_ = -1; }

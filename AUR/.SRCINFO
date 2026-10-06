@@ -1,0 +1,24 @@
+pkgbase = pipewire-waybar
+	pkgdesc = PipeWire sink switcher for Waybar: daemon, CLI and GTK4 layer-shell picker
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/HowardsPlayPen/pipewire-waybar
+	install = pipewire-waybar.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = nlohmann-json
+	makedepends = pkgconf
+	depends = pipewire
+	depends = sdbus-cpp
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = glib2
+	depends = glibc
+	depends = gcc-libs
+	optdepends = waybar: bar widget host
+	source = pipewire-waybar-1.0.0.tar.gz::https://github.com/HowardsPlayPen/pipewire-waybar/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pipewire-waybar

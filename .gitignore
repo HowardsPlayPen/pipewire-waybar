@@ -55,3 +55,9 @@ coverage/
 
 # Generated docs
 /docs/_build/
+
+# makepkg artefacts (AUR/)
+AUR/src/
+AUR/pkg/
+AUR/*.tar.gz
+AUR/*.pkg.tar.*
