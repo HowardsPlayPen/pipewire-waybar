@@ -1,0 +1,11 @@
+// Drop into your waybar config "modules-right" (or wherever).
+// Make sure to also reference "custom/sink" in the bar's module list.
+{
+    "custom/sink": {
+        "exec": "pipewire-waybar watch",
+        "return-type": "json",
+        "on-click": "pipewire-waybar-picker",
+        "tooltip": true,
+        "escape": true
+    }
+}

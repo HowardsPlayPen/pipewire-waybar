@@ -1,0 +1,18 @@
+/* Append to your waybar style.css (or @import this file). */
+
+#custom-sink {
+    padding: 0 10px;
+    transition: background-color 200ms ease, color 200ms ease;
+}
+
+#custom-sink.hdmi        { color: #a6e3a1; }
+#custom-sink.spdif       { color: #94e2d5; }
+#custom-sink.usb         { color: #89b4fa; }
+#custom-sink.bluetooth   { color: #cba6f7; }
+#custom-sink.virtual     { color: #f9e2af; }
+#custom-sink.unavailable { color: #f38ba8; }
+
+#custom-sink.flash {
+    background-color: #f9e2af;
+    color: #1e1e2e;
+}

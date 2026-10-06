@@ -1,0 +1,13 @@
+[Unit]
+Description=PipeWire sink manager for Waybar
+After=pipewire.service pipewire-pulse.service
+Wants=pipewire.service
+
+[Service]
+Type=simple
+ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/pipewire-waybard
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

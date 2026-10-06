@@ -1,0 +1,57 @@
+# Build output
+build/
+build-*/
+out/
+cmake-build-*/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+Makefile
+*.cmake
+!CMakeLists.txt.in
+compile_commands.json
+
+# Object/binary artefacts
+*.o
+*.obj
+*.so
+*.so.*
+*.a
+*.dylib
+*.dll
+*.exe
+*.gch
+*.pch
+
+# Editors / tooling caches
+.cache/
+.ccls-cache/
+.clangd/
+.vscode/
+.vs/
+.idea/
+*.swp
+*.swo
+*.code-workspace
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Local overrides
+config.json
+*.local.json
+
+# Coverage / sanitizer artefacts
+*.gcda
+*.gcno
+*.profraw
+*.profdata
+coverage/
+
+# Generated docs
+/docs/_build/
